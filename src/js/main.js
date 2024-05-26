@@ -14,32 +14,47 @@ const medInventoryContainer = document.querySelector(
   ".display-inventory-container"
 );
 
-//DECLARING MED CLASS
-class Medicine {
+// INITIALIZE RANDOM ITEN TO DEMONSTRATE INHERITANCE
+class Item {
   constructor(name, manufacturer, expiration, quantity) {
     this.name = name;
     this.manufacturer = manufacturer;
     this.expiration = expiration;
     this.quantity = quantity;
-    this.id = Date.now();
-  }
-
-  static addMed(med) {
-    meds.push(med);
   }
 }
 
+//INITIALIZE MEDICINE
+class Medicine extends Item {
+  constructor(name, manufacturer, expiration, quantity) {
+    super(name, manufacturer, expiration, quantity);
+    this.id = Date.now();
+  }
+  //push med to array of meds
+  static addMed(med) {
+    meds.push(med);
+  }
+  //delete static function
+  static deleteMed(id) {
+    const index = meds.findIndex((med) => med.id === id);
+    if (index !== -1) {
+      meds.splice(index, 1);
+    }
+  }
+}
+
+//ADD EVENT LISTENER TO FORM
 medForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  let newMed;
-  newMed = new Medicine(
+  const newMed = new Medicine(
     medName.value,
     medManufacturer.value,
     medExpirationDate.value,
     medStock.value
   );
   Medicine.addMed(newMed);
-  console.log(newMed);
+  UI.renderMeds(meds);
+  medForm.reset();
 });
 
 //DECLARE UI-CLASS
@@ -49,6 +64,7 @@ class UI {
     medUl.textContent = "";
     meds.forEach((med) => {
       const liRow = document.createElement("li");
+
       const renderedName = document.createElement("span");
       const renderedManufacturer = document.createElement("span");
       const renderedExpiration = document.createElement("span");
@@ -64,20 +80,26 @@ class UI {
       renderedManufacturer.textContent = med.manufacturer;
       renderedExpiration.textContent = med.expiration;
       renderedQuantity.textContent = med.quantity;
-      //renderedId.textContent = med.id;
+      renderedId.textContent = med.id;
       deleteButton.textContent = "Delete";
 
       liRow.dataset.id = med.id;
 
-      medUl.append(liRow);
       liRow.append(
         renderedName,
         renderedManufacturer,
         renderedExpiration,
         renderedQuantity,
+        renderedId,
         deleteButtonContainer
       );
       deleteButtonContainer.append(deleteButton);
+      medUl.append(liRow);
+
+      deleteButton.addEventListener("click", () => {
+        Medicine.deleteMed(med.id);
+        UI.renderMeds(meds);
+      });
     });
   }
 }
