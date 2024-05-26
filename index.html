@@ -8,7 +8,47 @@
 	<title>object-oriented-project</title>
 </head>
 <body>
+	<div class="main-container">
+		<form class="med-form">
+		<!-- FORM SECTION -->
+			<h2>Inventory Management System</h2>
+
+			<label for="product-name">Product Name</label>
+			<input type="text" name="product-name" class="product-name" required> 
+
+			<label for="manufacturer">Manufacturer</label>
+			<input type="text" name="manufacturer" class="manufacturer" required>
+
+			<label for="expiration">Expiration Date</label>
+			<input type="date" name="expiration" class="expiration" required>
+
+			<label for="quantity">Quantity</label>
+			<input type="number" name="quantity" class="quantity" required >
+
+			<button type="submit" class="submit-button">Submit</button>
+
+		</form>
+
+		<section class="inventory-display">
+			<!-- DISPLAY SECTION -->
 	
+			<div class="display-inventory-container">
+				<div class="display-inventory-wrapper">
+					<header class="display-inventory-header">
+						<span>Product Name</span>
+						<span>Manufacturer</span>
+						<span>Expiration Date</span>
+						<span>Quantity</span>
+						<span>ID</span>
+						<Span></Span>
+					</header>
+					<ul class="inventory-list"></ul>
+				</div>
+			</div>
+		</section>
+
+
+</div>
 	<script src="src/js/main.js"></script>
 </body>
 </html>
