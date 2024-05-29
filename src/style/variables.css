@@ -1,0 +1,23 @@
+:root {
+	--background-color: #121212;
+	--container-color: #1e1e1e;
+	--text-color: #ffffff;
+	--border-color: #333333;
+	--button-bg-color: #4CAF50;
+	--button-bg-hover-color: #45a049;
+	--delete-button-bg-color: #f44336;
+	--delete-button-bg-hover-color: #d32f2f;
+	--table-header-bg-color: #4CAF50;
+	--table-row-hover-color: #2c2c2c;
+	--table-even-row-bg-color: #f9f9f9;
+	--table-even-row-text-color: #000000;
+	--padding-small: 0.3125rem;
+	--padding-medium: 0.625rem;
+	--padding-large: 1.25rem;
+	--margin-small: 0.3125rem;
+	--margin-medium: 0.9375rem;
+	--margin-large: 1.25rem;
+	--border-radius-small: 0.25rem;
+	--border-radius-medium: 0.5rem;
+	--box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
+}
