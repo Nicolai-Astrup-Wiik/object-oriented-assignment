@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +8,15 @@
 	<link rel="stylesheet" href="src/style/style.css">
 	<title>object-oriented-project</title>
 </head>
+
 <body>
 	<div class="main-container">
 		<form class="med-form">
-		<!-- FORM SECTION -->
+			<!-- FORM SECTION -->
 			<h2>Inventory Management System</h2>
 
 			<label for="product-name">Product Name</label>
-			<input type="text" name="product-name" class="product-name" required> 
+			<input type="text" name="product-name" class="product-name" required>
 
 			<label for="manufacturer">Manufacturer</label>
 			<input type="text" name="manufacturer" class="manufacturer" required>
@@ -23,7 +25,7 @@
 			<input type="date" name="expiration" class="expiration" required>
 
 			<label for="quantity">Quantity</label>
-			<input type="number" name="quantity" class="quantity" required >
+			<input type="number" name="quantity" class="quantity" required>
 
 			<button type="submit" class="submit-button">Submit</button>
 
@@ -31,24 +33,26 @@
 
 		<section class="inventory-display">
 			<!-- DISPLAY SECTION -->
-	
 			<div class="display-inventory-container">
 				<div class="display-inventory-wrapper">
-					<header class="display-inventory-header">
-						<span>Product Name</span>
-						<span>Manufacturer</span>
-						<span>Expiration Date</span>
-						<span>Quantity</span>
-						<span>ID</span>
-						<Span></Span>
-					</header>
-					<ul class="inventory-list"></ul>
+					<table class="inventory-table">
+						<thead>
+							<tr>
+								<th>Product Name</th>
+								<th>Manufacturer</th>
+								<th>Expiration Date</th>
+								<th>Quantity</th>
+								<th>ID</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody class="inventory-list"></tbody>
+					</table>
 				</div>
 			</div>
 		</section>
-
-
-</div>
+	</div>
 	<script src="src/js/main.js"></script>
 </body>
+
 </html>
