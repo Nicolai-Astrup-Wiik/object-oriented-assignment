@@ -1,5 +1,5 @@
 //DECLARE CONSTANTS
-const meds = [];
+const meds = JSON.parse(localStorage.getItem('meds')) || [];
 
 //SELECT FROM DOM
 const medForm = document.querySelector(".med-form");
@@ -9,12 +9,10 @@ const medExpirationDate = document.querySelector(".expiration");
 const medStock = document.querySelector(".quantity");
 const submitButton = document.querySelector(".submit-button");
 
-const medUl = document.querySelector(".inventory-list");
-const medInventoryContainer = document.querySelector(
-  ".display-inventory-container"
-);
+const medTbody = document.querySelector(".inventory-list");
+const medInventoryContainer = document.querySelector(".display-inventory-container");
 
-// INITIALIZE RANDOM ITEN TO DEMONSTRATE INHERITANCE
+// Base Class for Item
 class Item {
   constructor(name, manufacturer, expiration, quantity) {
     this.name = name;
@@ -24,26 +22,31 @@ class Item {
   }
 }
 
-//INITIALIZE MEDICINE
+// Medicine Class extending Item
 class Medicine extends Item {
   constructor(name, manufacturer, expiration, quantity) {
     super(name, manufacturer, expiration, quantity);
     this.id = Date.now();
   }
-  //push med to array of meds
+
   static addMed(med) {
     meds.push(med);
+    Medicine.saveToLocalStorage();
   }
-  //delete static function
+
   static deleteMed(id) {
     const index = meds.findIndex((med) => med.id === id);
     if (index !== -1) {
       meds.splice(index, 1);
+      Medicine.saveToLocalStorage();
     }
+  }
+
+  static saveToLocalStorage() {
+    localStorage.setItem('meds', JSON.stringify(meds));
   }
 }
 
-//ADD EVENT LISTENER TO FORM
 medForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const newMed = new Medicine(
@@ -61,31 +64,28 @@ medForm.addEventListener("submit", (e) => {
 class UI {
   static renderMeds(meds) {
     medInventoryContainer.style.display = "block";
-    medUl.textContent = "";
+    medTbody.textContent = "";
     meds.forEach((med) => {
-      const liRow = document.createElement("li");
+      const trRow = document.createElement("tr");
 
-      const renderedName = document.createElement("span");
-      const renderedManufacturer = document.createElement("span");
-      const renderedExpiration = document.createElement("span");
-      const renderedQuantity = document.createElement("span");
-      const renderedId = document.createElement("span");
-      const deleteButtonContainer = document.createElement("span");
+      const renderedName = document.createElement("td");
+      const renderedManufacturer = document.createElement("td");
+      const renderedExpiration = document.createElement("td");
+      const renderedQuantity = document.createElement("td");
+      const renderedId = document.createElement("td");
+      const deleteButtonContainer = document.createElement("td");
       const deleteButton = document.createElement("button");
-
-      liRow.classList.add("medicine-row");
-      deleteButton.classList.add("delete-button");
 
       renderedName.textContent = med.name;
       renderedManufacturer.textContent = med.manufacturer;
       renderedExpiration.textContent = med.expiration;
       renderedQuantity.textContent = med.quantity;
       renderedId.textContent = med.id;
+
       deleteButton.textContent = "Delete";
+      deleteButton.classList.add("delete-button");
 
-      liRow.dataset.id = med.id;
-
-      liRow.append(
+      trRow.append(
         renderedName,
         renderedManufacturer,
         renderedExpiration,
@@ -94,7 +94,7 @@ class UI {
         deleteButtonContainer
       );
       deleteButtonContainer.append(deleteButton);
-      medUl.append(liRow);
+      medTbody.append(trRow);
 
       deleteButton.addEventListener("click", () => {
         Medicine.deleteMed(med.id);
@@ -103,3 +103,8 @@ class UI {
     });
   }
 }
+
+// Load medicines from localStorage on page load
+document.addEventListener('DOMContentLoaded', () => {
+  UI.renderMeds(meds);
+});

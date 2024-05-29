@@ -1,0 +1,116 @@
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f0f0f0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.main-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: white;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	width: 90%;
+	max-width: 1200px;
+}
+
+.med-form {
+	display: flex;
+	flex-direction: column;
+	width: 35%;
+}
+
+.med-form h2 {
+	margin-bottom: 20px;
+	color: #333;
+}
+
+.med-form label {
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+.med-form input {
+	margin-bottom: 15px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 16px;
+}
+
+.med-form button {
+	padding: 10px 20px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
+	transition: background-color 0.3s;
+}
+
+.med-form button:hover {
+	background-color: #45a049;
+}
+
+.inventory-display {
+	width: 60%;
+}
+
+.display-inventory-container {
+	display: none;
+	width: 100%;
+}
+
+.display-inventory-wrapper {
+	width: 100%;
+	overflow-x: auto;
+}
+
+.inventory-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.inventory-table th,
+.inventory-table td {
+	padding: 10px;
+	text-align: left;
+	border: 1px solid #ddd;
+	word-wrap: break-word;
+}
+
+.inventory-table th {
+	background-color: #4CAF50;
+	color: white;
+	font-weight: bold;
+}
+
+.inventory-table tbody tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+.inventory-table tbody tr:hover {
+	background-color: #f1f1f1;
+}
+
+.delete-button {
+	background-color: #f44336;
+	color: white;
+	border: none;
+	padding: 5px 10px;
+	cursor: pointer;
+	border-radius: 4px;
+	transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+	background-color: #d32f2f;
+}
