@@ -130,6 +130,10 @@ body {
 	white-space: nowrap;
 }
 
+.error-element {
+	color: red
+}
+
 @media (max-width: 900px) {
 	body {
 		font-size: x-small;
@@ -169,6 +173,7 @@ body {
 
 	.inventory-table th,
 	.inventory-table td {
+		flex-wrap: wrap;
 		white-space: wrap;
 	}
 

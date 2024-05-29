@@ -17,16 +17,20 @@
 			<h2>Inventory Management System</h2>
 
 			<label for="product-name">Product Name</label>
-			<input type="text" name="product-name" class="product-name" required>
+			<input type="text" name="product-name" class="product-name">
+			<p class="error-element" id="name-error"></p>
 
 			<label for="manufacturer">Manufacturer</label>
-			<input type="text" name="manufacturer" class="manufacturer" required>
+			<input type="text" name="manufacturer" class="manufacturer">
+			<p class="error-element" id="manufacturer-error"></p>
 
 			<label for="expiration">Expiration Date</label>
-			<input type="date" name="expiration" class="expiration" required>
+			<input type="date" name="expiration" class="expiration">
+			<p class="error-element" id="expiration-date-error"></p>
 
 			<label for="quantity">Quantity</label>
-			<input type="number" name="quantity" class="quantity" required>
+			<input type="number" name="quantity" class="quantity">
+			<p class="error-element" id="quantity-error"></p>
 
 			<button type="submit" class="submit-button">Submit</button>
 
@@ -53,6 +57,7 @@
 			</div>
 		</section>
 	</div>
+	<script src="src/js/validation.js"></script>
 	<script src="src/js/main.js"></script>
 </body>
 
