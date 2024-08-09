@@ -37,7 +37,7 @@ body {
 }
 
 .med-form input {
-	margin-bottom: var(--margin-medium);
+	margin-bottom: var(--margin-small);
 	padding: var(--padding-medium);
 	border: 0.0625rem solid var(--border-color);
 	border-radius: var(--border-radius-small);
@@ -131,7 +131,13 @@ body {
 }
 
 .error-element {
-	color: red
+	/*position: absolute;*/
+	/*bottom: -20px;*/
+	left: 0;
+	height: 20px;
+	color: red;
+	font-size: 12px;
+	margin-bottom: 0.2rem;
 }
 
 @media (max-width: 900px) {
